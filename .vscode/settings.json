@@ -1,0 +1,16 @@
+{
+    "python.globalModuleInstallation": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace  ",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "smooth",
+    "files.autoSave": "afterDelay"
+    
+
+}
