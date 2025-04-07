@@ -1,0 +1,2 @@
+"""this is a script that visualizes basketball stats"""
+#i giuess this project is about creating visualizations of let's say steph curry in a prticular year, then i campare it against lameo ball right? hmm i like the project
