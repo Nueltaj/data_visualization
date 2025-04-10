@@ -44,3 +44,29 @@
 # # sns.countplot(x="sex",data=tips)
 # # plt.show()
 
+import pandas as pd  
+import seaborn as sns  
+import matplotlib.pyplot as plt  
+
+# Sample data  
+data = {  
+    'Category': ['A', 'A', 'B', 'B'],  
+    'Value': [10, 20, 15, 25],  
+    'Group': ['Group 1', 'Group 2', 'Group 1', 'Group 2']  
+}  
+
+# Create a DataFrame  
+df = pd.DataFrame(data)  
+
+# Create the bar plot  
+plt.figure(figsize=(8, 5))  
+sns.barplot(data=df, x='Category', y='Value', hue='Group', palette='muted')  
+
+# Add title and labels  
+plt.title('Two Bar Charts Combined')  
+plt.xlabel('Category')  
+plt.ylabel('Value')  
+
+# Show the plot  
+plt.legend(title='Groups')  
+plt.show()  
