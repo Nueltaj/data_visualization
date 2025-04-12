@@ -17,7 +17,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import os
-#create folder
+
+# create folder
 output_folder = "plots"
 os.makedirs(output_folder, exist_ok=True)
 
@@ -246,30 +247,33 @@ def plot_stat_comparison_chart(player1, player2):
     plt.suptitle("NBA 2033/2024 Season Stats", fontfamily="DejaVu Serif", fontsize=15)
     plt.tight_layout()
 
-    # Save the comparison chart in multiple formats for versatility:
-    # PNG, PDF, TIFF, JPG, and SVG, facilitating both raster and vector graphics usage.
-    NAME_OF_FILE = f"{output_folder}/comparison_chart_of_{player1}_to_{player2}"
-    # Standard image format
-    plt.savefig(f"{NAME_OF_FILE}.png", dpi=300)
-    # vector graphics
-    plt.savefig(f"{NAME_OF_FILE}.pdf")
-    # for high Quality image
-    plt.savefig(f"{NAME_OF_FILE}.tiff", format="tiff", dpi=300)
-    # compressed image format
-    plt.savefig(f"{NAME_OF_FILE}.jpg", format="jpg", dpi=300)
-    # High-quality, scalable images.
-    plt.savefig(f"{NAME_OF_FILE}.jpg", format="svg")
-    print(
-        f"The comparison chart for {player1} and {player2} has been successfully visualized!! 🎉🎉"
-    )
 
-    # show the file(optional)
-    plt.show()
+def save_fig(player1, player2):
+    """Requests the user's answer to save the file according to a certain format."""
+    supported_formats = ["png", "pdf", "tiff", "jpg", "svg"]
+
+    print(f"You can save the file in: {', '.join(supported_formats).upper()}")
+
+    while True:
+        file_format = input("Enter the format you want to save the chart as: ").lower().strip()
+        
+        if file_format in supported_formats:
+            NAME_OF_FILE = f"{output_folder}/comparison_chart_of_{player1}_to_{player2}"
+            plt.savefig(f"{NAME_OF_FILE}.{file_format}", format=file_format, dpi=300)
+            print(f"\nChart saved successfully as {NAME_OF_FILE}.{file_format} 🎉")
+            break
+        else:
+            print("❌ Invalid format. Please enter a valid format.")
 
 
-player1, player2 = player_prompt()
+def main():
+    player1, player2 = player_prompt()
 
-# check if they exist
-if player1 and player2:
-    # plots the comparison chart
-    plot_stat_comparison_chart(player1, player2)
+    if player1 and player2:
+        plot_stat_comparison_chart(player1, player2)
+        save_fig(player1, player2)
+        # show the file(optional)
+        plt.show()
+
+if __name__ == "__main__":
+    main()
